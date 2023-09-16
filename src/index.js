@@ -4,7 +4,6 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './js/refs';
 import { markupGallery } from './js/markup';
 
-const lastElement = document.querySelector('target');
 const { searchForm, galleryContainer, btnLoadMore } = refs;
 
 const perPage = 40;
@@ -13,7 +12,7 @@ let keyOfSearch = '';
 
 
 
-// btnLoadMore.classList.add('is-hidden');
+btnLoadMore.classList.add('is-hidden');
 
 searchForm.addEventListener('submit', onSubmit);
 
@@ -34,10 +33,10 @@ function onSubmit(event) {
     return;
   }
 
-  fetchGallery(keyOfSearch, page, perPage).then(data => {
+  fetchGallery(keyOfSearch, page, perPage)
+    .then(data => {
     const searchResults = data.hits;
-    //   console.log(searchResults);
-    if (data.totalHits === 0) {
+        if (data.totalHits === 0) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.');
     } else {
@@ -62,8 +61,7 @@ function onSubmit(event) {
 
 function onClickLoadMore() {
   page += 1;
-  
-  fetchGallery(keyOfSearch, page, perPage)
+    fetchGallery(keyOfSearch, page, perPage)
     .then(data => {
       const searchResults = data.hits;
       const numberOfPage = Math.ceil(data.totalHits / perPage);
@@ -82,22 +80,6 @@ function onClickLoadMore() {
     })
     .catch(fetchError);
 };
-
-// const handleIntersection = function (entries, observer) {
-//   entries.forEach(entry => {
-//     console.log(entry);
-//     // if (!entry.isIntersecting) {
-//     //   observer.observe(lastElement);
-//     //   onClickLoadMore();
-//     // }
-//   });
-// };
-// const options = {
-//   root: null,
-//    threshold: 1,
-// };
-// const observer = new IntersectionObserver(handleIntersection, options);
-// observer.observe(lastElement);
 
 
 function fetchError() {
