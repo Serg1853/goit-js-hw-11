@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #212121;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  width: 100%;
+   border: 1px solid #ebf1f4;
+  border-radius: 5px;
+  
+}
+
+.is-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.search-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  /* gap: 30px; */
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+  background: rgba(1, 247, 255, 0.9);
+}
+input {
+  width: 350px;
+  height: 50px;
+  padding: 5px 5px 5px 15px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.search {
+  position: relative;
+  left: -50px;
+  background-color: #fff;
+  width: 50px;
+  height: 50px;
+}
+.search:hover,
+.search:focus {
+  background-color: #edf4f4;
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4489f1;
+}
+button:hover,
+button:focus {
+  background-color: #5e6bf5;
+}
+.gallery {
+  margin-top: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  
+}
+.img_wrap {
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.load-more {
+  margin: 40px auto;
+  width: 200px;
+ 
+}
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  /* font-size: 14px; */
+}
+.photo-card {
+  background-color: rgb(183, 241, 236);
+  border: 1px solid #9ab7c6;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  flex-basis: calc((100% - 90px) / 4);
+  
+}
+.photo-card:hover,
+.photo-card:focus {
+  transition: transform 250ms linear;
+transform: scale(1.05);
+}
