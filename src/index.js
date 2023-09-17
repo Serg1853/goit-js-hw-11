@@ -36,18 +36,22 @@ function onSubmit(event) {
   fetchGallery(keyOfSearch, page, perPage)
     .then(data => {
     const searchResults = data.hits;
-        if (data.totalHits === 0) {
-      Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.');
-    } else {
-      Notify.info(`Hooray! We found ${data.totalHits} images.`);
-      markupGallery(searchResults);
-      lightbox.refresh();
-    };
+      if (data.totalHits === 0) {
+        
+        Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+      } else {
+        Notify.info(`Hooray! We found ${data.totalHits} images.`);
+        markupGallery(searchResults);
+        lightbox.refresh();
+      };
   
     if (data.totalHits > perPage) {
       btnLoadMore.classList.remove('is-hidden');
-    };
+    } else if (data.totalHits < perPage) {
+      btnLoadMore.classList.add('is-hidden')
+    }
 
   })
     .catch(fetchError);
@@ -72,9 +76,8 @@ function onClickLoadMore() {
         Notify.info(
           "We're sorry, but you've reached the end of search results."
         );
-        
-        btnLoadMore.removeEventListener('click', onClickLoadMore);
 
+        btnLoadMore.removeEventListener('click', onClickLoadMore);
       }
       lightbox.refresh();
     })
